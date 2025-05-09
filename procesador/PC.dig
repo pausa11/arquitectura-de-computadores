@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes>
+    <entry>
+      <string>romContent</string>
+      <romList>
+        <roms/>
+      </romList>
+    </entry>
+    <entry>
+      <string>Width</string>
+      <int>8</int>
+    </entry>
+  </attributes>
+  <visualElements>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>El contador de programa actual</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>Output</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>5</int>
+        </entry>
+      </elementAttributes>
+      <pos x="520" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>Provoca un salto absoluto. El valor de la entrada de la ALU se utiliza como la nueva dirección</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>reset</string>
+        </entry>
+      </elementAttributes>
+      <pos x="200" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>Se activa si hay un salto relativo. El valor de la entrada de la ALU se le suma a la dirección actual</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>wen</string>
+        </entry>
+      </elementAttributes>
+      <pos x="180" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Clock</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>clock</string>
+        </entry>
+      </elementAttributes>
+      <pos x="200" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Counter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>5</int>
+        </entry>
+      </elementAttributes>
+      <pos x="380" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>El contador de programa actual</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>ovf</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>5</int>
+        </entry>
+      </elementAttributes>
+      <pos x="540" y="220"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="440" y="160"/>
+      <p2 x="520" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="180" y="160"/>
+      <p2 x="380" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="200" y="320"/>
+      <p2 x="300" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="200" y="240"/>
+      <p2 x="240" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="240" y="180"/>
+      <p2 x="380" y="180"/>
+    </wire>
+    <wire>
+      <p1 x="440" y="180"/>
+      <p2 x="520" y="180"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="200"/>
+      <p2 x="380" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="220"/>
+      <p2 x="540" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="240" y="180"/>
+      <p2 x="240" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="180"/>
+      <p2 x="520" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="200"/>
+      <p2 x="300" y="320"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
