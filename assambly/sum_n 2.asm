@@ -1,7 +1,4 @@
-# sum_n.asm
-# Computes the sum of the first n numbers
-# input: a0 = n
-# output: t0 = sum(1..n)
+
     li a0, 5        # n = 5
     li t0, 0        # sum = 0
     li t1, 1        # i = 1
