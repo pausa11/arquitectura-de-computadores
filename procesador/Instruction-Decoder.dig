@@ -7,6 +7,19 @@
       <shapeType>LAYOUT</shapeType>
     </entry>
     <entry>
+      <string>backgroundColor</string>
+      <awt-color>
+        <red>153</red>
+        <green>153</green>
+        <blue>255</blue>
+        <alpha>255</alpha>
+      </awt-color>
+    </entry>
+    <entry>
+      <string>Label</string>
+      <string>instruction decoder</string>
+    </entry>
+    <entry>
       <string>romContent</string>
       <romList>
         <roms/>
@@ -18,7 +31,7 @@
     </entry>
     <entry>
       <string>Width</string>
-      <int>7</int>
+      <int>5</int>
     </entry>
   </attributes>
   <visualElements>

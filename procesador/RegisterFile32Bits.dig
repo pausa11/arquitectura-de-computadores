@@ -2774,7 +2774,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>DataWrite</string>
+          <string>dataWrite</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -2792,7 +2792,7 @@
         </entry>
         <entry>
           <string>Label</string>
-          <string>Clock</string>
+          <string>clock</string>
         </entry>
       </elementAttributes>
       <pos x="3320" y="400"/>
@@ -2830,7 +2830,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>Rs1</string>
+          <string>rs1</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -2844,7 +2844,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>Rs2</string>
+          <string>rs2</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -2878,7 +2878,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>RU[rs1]</string>
+          <string>rf[rs1]</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -2892,7 +2892,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>RU[rs2]</string>
+          <string>rf[rs2]</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -2906,7 +2906,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>Rd</string>
+          <string>rd</string>
         </entry>
         <entry>
           <string>Bits</string>
