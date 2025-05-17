@@ -116,14 +116,19 @@
       <pos x="200" y="-540"/>
     </visualElement>
     <visualElement>
-      <elementName>Immediate_generator.dig</elementName>
-      <elementAttributes/>
-      <pos x="220" y="20"/>
+      <elementName>BranchUnit.dig</elementName>
+      <elementAttributes>
+        <entry>
+          <string>shapeType</string>
+          <shapeType>CUSTOM</shapeType>
+        </entry>
+      </elementAttributes>
+      <pos x="580" y="-700"/>
     </visualElement>
     <visualElement>
-      <elementName>bjunit.dig</elementName>
+      <elementName>imm.dig</elementName>
       <elementAttributes/>
-      <pos x="520" y="-700"/>
+      <pos x="260" y="20"/>
     </visualElement>
   </visualElements>
   <wires>

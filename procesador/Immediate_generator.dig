@@ -6,10 +6,14 @@
       <string>backgroundColor</string>
       <awt-color>
         <red>255</red>
-        <green>204</green>
-        <blue>255</blue>
+        <green>255</green>
+        <blue>204</blue>
         <alpha>255</alpha>
       </awt-color>
+    </entry>
+    <entry>
+      <string>Label</string>
+      <string>immediate-generator</string>
     </entry>
     <entry>
       <string>romContent</string>

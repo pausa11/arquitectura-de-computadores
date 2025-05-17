@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes>
+    <entry>
+      <string>backgroundColor</string>
+      <awt-color>
+        <red>204</red>
+        <green>204</green>
+        <blue>255</blue>
+        <alpha>255</alpha>
+      </awt-color>
+    </entry>
+    <entry>
+      <string>bigEndianSetting</string>
+      <boolean>true</boolean>
+    </entry>
+    <entry>
+      <string>romContent</string>
+      <romList>
+        <roms/>
+      </romList>
+    </entry>
+    <entry>
+      <string>Width</string>
+      <int>8</int>
+    </entry>
+    <entry>
+      <string>preloadProgram</string>
+      <boolean>true</boolean>
+    </entry>
+    <entry>
+      <string>preloadProgramFile</string>
+      <file>G:\Tareas\Semestre VI\Arquitectura\Procesador Monociclo\CheckSum-Instrucciones\insts.hex</file>
+    </entry>
+  </attributes>
+  <visualElements>
+    <visualElement>
+      <elementName>Const</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Value</string>
+          <long>0</long>
+        </entry>
+      </elementAttributes>
+      <pos x="2320" y="520"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Const</elementName>
+      <elementAttributes/>
+      <pos x="2320" y="540"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>Instruction</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
+        <entry>
+          <string>intFormat</string>
+          <intFormat>bin</intFormat>
+        </entry>
+      </elementAttributes>
+      <pos x="2640" y="500"/>
+    </visualElement>
+    <visualElement>
+      <elementName>EEPROM</elementName>
+      <elementAttributes>
+        <entry>
+          <string>AddrBits</string>
+          <int>24</int>
+        </entry>
+        <entry>
+          <string>isProgramMemory</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
+        <entry>
+          <string>Data</string>
+          <data>fe010113,0,0,0,112e23,0,0,0,812c23,0,0,0,2010413,0,0,0,a00793
+,0,0,0,fef42623,0,0,0,fec42703,0,0,0,100793,0,0,0,e7c663,0,0,0
+,100793,0,0,0,3c0006f,0,0,0,100793,0,0,0,fef42423,0,0,0,200006f
+,0,0,0,fe842703,0,0,0,fec42783,0,0,0,2f707b3,0,0,0,fef42423,0,0,0
+,fec42783,0,0,0,fff78793,0,0,0,fef42623,0,0,0,fec42703,0,0,0,100793
+,0,0,0,fce7cee3,0,0,0,fe842783,0,0,0,78513,0,0,0,1c12083,0,0,0
+,1812403,0,0,0,2010113,0,0,0,8067</data>
+        </entry>
+      </elementAttributes>
+      <pos x="2400" y="460"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Const</elementName>
+      <elementAttributes/>
+      <pos x="2320" y="480"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>OutPc</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>24</int>
+        </entry>
+      </elementAttributes>
+      <pos x="2280" y="440"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="2320" y="480"/>
+      <p2 x="2400" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="2460" y="500"/>
+      <p2 x="2640" y="500"/>
+    </wire>
+    <wire>
+      <p1 x="2320" y="520"/>
+      <p2 x="2400" y="520"/>
+    </wire>
+    <wire>
+      <p1 x="2280" y="440"/>
+      <p2 x="2380" y="440"/>
+    </wire>
+    <wire>
+      <p1 x="2380" y="460"/>
+      <p2 x="2400" y="460"/>
+    </wire>
+    <wire>
+      <p1 x="2320" y="540"/>
+      <p2 x="2400" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="2380" y="440"/>
+      <p2 x="2380" y="460"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
