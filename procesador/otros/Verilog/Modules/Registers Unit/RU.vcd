@@ -1,0 +1,120 @@
+$date
+	Wed Oct 30 16:07:18 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module RU_tb $end
+$var wire 32 ! o_rs2 [31:0] $end
+$var wire 32 " o_rs1 [31:0] $end
+$var reg 1 # Clk $end
+$var reg 32 $ DataWr [31:0] $end
+$var reg 1 % RUWr $end
+$var reg 5 & rd [4:0] $end
+$var reg 5 ' rs1 [4:0] $end
+$var reg 5 ( rs2 [4:0] $end
+$scope module ru $end
+$var wire 1 # Clk $end
+$var wire 32 ) DataWr [31:0] $end
+$var wire 1 % RUWr $end
+$var wire 32 * o_rs1 [31:0] $end
+$var wire 32 + o_rs2 [31:0] $end
+$var wire 5 , rd [4:0] $end
+$var wire 5 - rs1 [4:0] $end
+$var wire 5 . rs2 [4:0] $end
+$scope begin $ivl_for_loop0 $end
+$var integer 32 / i [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b100000 /
+b0 .
+b0 -
+b0 ,
+b0 +
+b0 *
+b0 )
+b0 (
+b0 '
+b0 &
+0%
+b0 $
+0#
+b0 "
+b0 !
+$end
+#5
+1#
+#10
+0#
+1%
+b1111011 $
+b1111011 )
+#15
+1#
+#20
+0#
+0%
+#25
+1#
+#30
+0#
+1%
+b101101 $
+b101101 )
+b101 &
+b101 ,
+#35
+1#
+#40
+0#
+b101101 "
+b101101 *
+b101 '
+b101 -
+0%
+#45
+1#
+#50
+0#
+1%
+b1100100 $
+b1100100 )
+b1010 &
+b1010 ,
+#55
+1#
+#60
+0#
+b1100100 !
+b1100100 +
+b1010 (
+b1010 .
+0%
+#65
+1#
+#70
+0#
+1%
+b11001000 $
+b11001000 )
+#75
+b11001000 !
+b11001000 +
+1#
+#80
+0#
+b11001000 "
+b11001000 *
+b1010 '
+b1010 -
+#85
+1#
+#90
+0#

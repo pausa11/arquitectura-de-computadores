@@ -1,0 +1,17 @@
+Para este caso, el instruction memory si se le cambia el archivo .hex hay que correrla por aparte primero y después
+correr el procesador, es un error que aunque intenté arreglarlo no funciona.
+
+Para ver los valores de señales en el visual:
+-Abrir el folder de Monociclo en visual
+-Abrir la terminal del folder
+-Ejecutar en el terminal vvp Monociclo_tb.vvp
+
+Si se desea hacer algún cambio en cualquier parte del procesador:
+-Borrar los archivos .vcd y .vvp de la carpeta de monociclo
+- Ejecutar en el terminal: iverilog -g2012 -o Monociclo_tb.vvp Monociclo_tb.sv 
+
+Si se desea ver las señales en el gtk wave: 
+-Borrar los archivos .vcd y .vvp de la carpeta de monociclo
+-Ejecutar en el terminal: iverilog -g2012 -o Monociclo_tb.vvp Monociclo_tb.sv  y  iverilog -g2012 -o Monociclo_tb.vvp Monociclo_tb.sv
+vvp Monociclo_tb.vvp
+-Ejecutar: gtkwave Monociclo.vcd
