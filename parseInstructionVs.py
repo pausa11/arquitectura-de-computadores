@@ -1,30 +1,29 @@
-def procesar_archivo_hex(nombre_archivo):
-    # Leer todos los bytes
-    with open(nombre_archivo, 'r') as f:
-        lines = [line.strip() for line in f if line.strip()]
+def reordenar_hex_little_endian(entrada_path, salida_path):
+    # Leer el archivo de entrada (sin la cabecera)
+    with open(entrada_path, "r") as f:
+        lineas = f.readlines()
 
-    # Validar múltiplos de 4
-    if len(lines) % 4 != 0:
-        raise ValueError("El número de líneas no es múltiplo de 4")
+    # Eliminar espacios y saltos de línea
+    hex_bytes = [line.strip() for line in lineas if line.strip()]
 
-    # Inicializar listas para los 4 archivos
-    columnas = [[] for _ in range(4)]
+    # Normalizar a dos dígitos hexadecimales
+    hex_normalizados = [f"{int(byte, 16):02x}" for byte in hex_bytes]
 
-    # Llenar columnas
-    for i in range(0, len(lines), 4):
-        for j in range(4):
-            # Convertir a int y luego a hexadecimal de 2 dígitos
-            byte_hex = format(int(lines[i + j], 16 if 'x' in lines[i + j].lower() else 10), '02X')
-            columnas[j].append(byte_hex)
+    # Reordenar en grupos de 4 bytes a little-endian
+    resultado = []
+    for i in range(0, len(hex_normalizados), 4):
+        grupo = hex_normalizados[i:i+4]
+        resultado.extend(grupo[::-1])  # invertir grupo
 
-    # Escribir en archivos separados con cabecera
-    for i in range(4):
-        with open(f"{i+1}.hex", 'w') as f:
-            f.write("v2.0 raw\n")
-            for byte in columnas[i]:
-                f.write(byte + '\n')
+    # Escribir archivo de salida con cabecera
+    with open(salida_path, "w") as f:
+        f.write("v2.0 raw\n")
+        for byte in resultado:
+            f.write(byte.upper() + "\n")
 
-    print("✅ Archivos 1.hex, 2.hex, 3.hex y 4.hex generados con cabecera para Digital.")
+    print(f"Archivo guardado en: {salida_path}")
 
-# Ejecución
-procesar_archivo_hex("instructions_hex.hex")
+# Ejemplo de uso:
+entrada = "instructions_hex.hex"         # archivo de entrada
+salida = "reordenado.hex"     # archivo de salida
+reordenar_hex_little_endian(entrada, salida)
