@@ -1,0 +1,74 @@
+`timescale 1ns/1ps
+
+module tb_Register_unit;
+
+    logic        Clk;
+    logic [31:0] RuDataWr;
+    logic [4:0]  Rs1, Rs2, Rd;
+    logic        RuWr;
+    logic [31:0] RuRs1, RuRs2;
+
+    // Instanciar el módulo bajo prueba
+    Register_unit uut (
+        .Clk(Clk),
+        .RuDataWr(RuDataWr),
+        .Rs1(Rs1),
+        .Rs2(Rs2),
+        .Rd(Rd),
+        .RuWr(RuWr),
+        .RuRs1(RuRs1),
+        .RuRs2(RuRs2)
+    );
+
+    // Generador de reloj: periodo de 10ns
+    initial begin
+        Clk = 0;
+        forever #5 Clk = ~Clk;
+    end
+
+    // Prueba principal
+    initial begin
+        // Inicialización
+        RuWr     = 0;
+        RuDataWr = 32'b0;
+        Rd       = 5'b0;
+        Rs1      = 5'b0;
+        Rs2      = 5'b0;
+
+        // Espera al primer flanco de reloj
+        #7;
+
+        // Escribir 32'h12345678 en el registro 5
+        RuWr     = 1;
+        Rd       = 5'd5;
+        RuDataWr = 32'h12345678;
+        #10;  // Esperar un ciclo de reloj
+
+        // Escribir 32'hAABBCCDD en el registro 10
+        Rd       = 5'd10;
+        RuDataWr = 32'hAABBCCDD;
+        #10;
+
+        // Deshabilitar escritura
+        RuWr = 0;
+
+        // Leer registros 5 y 10
+        Rs1 = 5'd5;
+        Rs2 = 5'd10;
+        #1;
+        $display("Lectura: RuRs1 = %h (esperado 12345678), RuRs2 = %h (esperado AABBCCDD)", RuRs1, RuRs2);
+
+        // Intentar escribir en el registro 0 (debe ser ignorado)
+        RuWr     = 1;
+        Rd       = 5'd0;
+        RuDataWr = 32'hFFFFFFFF;
+        #10;
+        RuWr = 0;
+        Rs1 = 5'd0;
+        #1;
+        $display("Registro 0: RuRs1 = %h (esperado 00000000)", RuRs1);
+
+        $finish;
+    end
+
+endmodule

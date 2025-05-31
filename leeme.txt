@@ -1,0 +1,11 @@
+-En la carpeta procesador estan los archivos .dig correspondientes al procesador, el principal es "Procesador Monociclo.dig"
+-En la carpeta assambly eston los codigos .asm que se usaron como pruebas
+-En la carpeta verilog-eda estan los archivos system verilog que se elaboraron en eda-playground
+-instructions_hex.hex es el archivo de las intrucciones generado por la extension del procesador.
+-parseInstructionVs.py es un script parsea y formatea las instrcciones del .hex para que las memorias rom de digital lo puedan leer
+-reordenado.hex es el resultado del script de python, este es el QUE SE MONTA en las memorias rom de digital
+-procesador.mov es un video del procesador en funcionamiento
+
+
+
+IMPORTANTE: si al ejecutar el procesador no funciona por error en el instruccion memory, se debe volver a cargar el ordenado.hex en las 4 roms de la instruction memory

@@ -2797,34 +2797,6 @@
       </elementAttributes>
       <pos x="3660" y="-280"/>
     </visualElement>
-    <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
-          <string>rotation</string>
-          <rotation rotation="2"/>
-        </entry>
-        <entry>
-          <string>NetName</string>
-          <string>s11</string>
-        </entry>
-      </elementAttributes>
-      <pos x="5160" y="-200"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Out</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Label</string>
-          <string>r10</string>
-        </entry>
-        <entry>
-          <string>Bits</string>
-          <int>32</int>
-        </entry>
-      </elementAttributes>
-      <pos x="5220" y="-200"/>
-    </visualElement>
   </visualElements>
   <wires>
     <wire>
@@ -3930,10 +3902,6 @@
     <wire>
       <p1 x="3740" y="1220"/>
       <p2 x="3820" y="1220"/>
-    </wire>
-    <wire>
-      <p1 x="5160" y="-200"/>
-      <p2 x="5220" y="-200"/>
     </wire>
     <wire>
       <p1 x="3440" y="-200"/>

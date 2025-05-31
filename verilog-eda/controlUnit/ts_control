@@ -1,0 +1,92 @@
+`timescale 1ns/1ps
+
+module tb_Control_unit;
+
+    // Señales de prueba
+    logic [6:0]  OpCode;
+    logic [2:0]  Funct3;
+    logic [6:0]  Funct7;
+    logic        RUWr;
+    logic [2:0]  ImmSrc;
+    logic        AluASrc;
+    logic        AluBSrc;
+    logic [4:0]  BrOp;
+    logic [3:0]  ALUOp;
+    logic        DMWr;
+    logic [2:0]  DMCtrl;
+    logic [1:0]  RUDataWrSrc;
+
+    // Instanciación del Control_unit
+    Control_unit uut (
+        .OpCode       (OpCode),
+        .Funct3       (Funct3),
+        .Funct7       (Funct7),
+        .RUWr         (RUWr),
+        .ImmSrc       (ImmSrc),
+        .AluASrc      (AluASrc),
+        .AluBSrc      (AluBSrc),
+        .BrOp         (BrOp),
+        .ALUOp        (ALUOp),
+        .DMWr         (DMWr),
+        .DMCtrl       (DMCtrl),
+        .RUDataWrSrc  (RUDataWrSrc)
+    );
+
+    initial begin
+        $display("Time | OpCode  Funct3 Funct7 | RUWr ImmSrc AluASrc AluBSrc BrOp   ALUOp DMWr DMCtrl RUDataWrSrc");
+        $display("-------------------------------------------------------------------------------------------");
+
+        // R-type ADD
+        OpCode = 7'b0110011; Funct3 = 3'b000; Funct7 = 7'b0000000; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // R-type SUB
+        Funct7 = 7'b0100000; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // I-type arith ADDI
+        OpCode = 7'b0010011; Funct3 = 3'b000; Funct7 = 7'b0000000; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // I-type arith SRAI
+        Funct3 = 3'b101; Funct7 = 7'b0100000; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // I-type load LW
+        OpCode = 7'b0000011; Funct3 = 3'b010; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // S-type store SW
+        OpCode = 7'b0100011; Funct3 = 3'b010; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // B-type branch BEQ
+        OpCode = 7'b1100011; Funct3 = 3'b000; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // J-type JAL
+        OpCode = 7'b1101111; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // U-type LUI
+        OpCode = 7'b0110111; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        // U-type AUIPC
+        OpCode = 7'b0010111; #10;
+        $display("%4dns | %b %b %b |   %b    %b      %b      %b    %b  %b    %b    %b", $time,
+                 OpCode, Funct3, Funct7, RUWr, ImmSrc, AluASrc, AluBSrc, BrOp, ALUOp, DMWr, DMCtrl, RUDataWrSrc);
+
+        #10 $finish;
+    end
+
+endmodule

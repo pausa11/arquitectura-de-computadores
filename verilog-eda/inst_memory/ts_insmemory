@@ -1,0 +1,51 @@
+`timescale 1ns/1ps
+
+module tb_Instruction_memory;
+
+    logic [31:0] Address;
+    logic [31:0] Instruction;
+
+    // Instancia del módulo bajo prueba
+    Instruction_memory uut (
+        .Address(Address),
+        .Instruction(Instruction)
+    );
+
+    // Simulación de contenido en memoria (sin archivo .hex)
+    // ⚠️ Sobrescribe el contenido para propósitos de prueba
+    initial begin
+        // Simula una carga manual (sin leer archivo)
+        uut.Memory[0]  = 8'hAA;
+        uut.Memory[1]  = 8'hBB;
+        uut.Memory[2]  = 8'hCC;
+        uut.Memory[3]  = 8'hDD; // Dirección 0 -> Instrucción: 0xDDCCBBAA
+
+        uut.Memory[4]  = 8'h11;
+        uut.Memory[5]  = 8'h22;
+        uut.Memory[6]  = 8'h33;
+        uut.Memory[7]  = 8'h44; // Dirección 4 -> Instrucción: 0x44332211
+
+        uut.Memory[8]  = 8'hFE;
+        uut.Memory[9]  = 8'hDC;
+        uut.Memory[10] = 8'hBA;
+        uut.Memory[11] = 8'h98; // Dirección 8 -> Instrucción: 0x98BADCFE
+    end
+
+    // Pruebas
+    initial begin
+        $display("Tiempo | Dirección | Instrucción (hex)");
+        $display("-------------------------------------");
+
+        Address = 0;  #5;
+        $display("%4dns |    %0d     |    %h", $time, Address, Instruction);
+
+        Address = 4;  #5;
+        $display("%4dns |    %0d     |    %h", $time, Address, Instruction);
+
+        Address = 8;  #5;
+        $display("%4dns |    %0d     |    %h", $time, Address, Instruction);
+
+        #5 $finish;
+    end
+
+endmodule

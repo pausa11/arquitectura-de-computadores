@@ -1,0 +1,51 @@
+`timescale 1ns/1ps
+
+module tb_Data_memory;
+
+    // Señales de prueba
+    logic [31:0] Address;
+    logic [31:0] DataWr;
+    logic        DMWr;
+    logic [2:0]  DMCtrl;
+    logic [31:0] DataRd;
+
+    // Instanciación del Data_memory
+    Data_memory uut (
+        .Address (Address),
+        .DataWr  (DataWr),
+        .DMWr    (DMWr),
+        .DMCtrl  (DMCtrl),
+        .DataRd  (DataRd)
+    );
+
+    initial begin
+        $display("Time | DMWr DMCtrl Address DataWr           | DataRd");
+        $display("--------------------------------------------------------------");
+
+        // Escribir y leer byte (SB + LB)
+        Address = 0; DataWr = 32'h000000AA; DMCtrl = 3'b000; DMWr = 1'b1; #10;
+        DMWr    = 1'b0; DMCtrl = 3'b000;                      #10;
+        $display("%4dns |  %b    %b    %0d      %h  | %h", $time, DMWr, DMCtrl, Address, DataWr, DataRd);
+
+        // Escribir y leer halfword (SH + LH)
+        Address = 1; DataWr = 32'h0000BBCC; DMCtrl = 3'b001; DMWr = 1'b1; #10;
+        DMWr    = 1'b0; DMCtrl = 3'b001;                      #10;
+        $display("%4dns |  %b    %b    %0d      %h  | %h", $time, DMWr, DMCtrl, Address, DataWr, DataRd);
+
+        // Escribir y leer word (SW + LW)
+        Address = 4; DataWr = 32'hDEADBEEF; DMCtrl = 3'b010; DMWr = 1'b1; #10;
+        DMWr    = 1'b0; DMCtrl = 3'b010;                      #10;
+        $display("%4dns |  %b    %b    %0d %h | %h", $time, DMWr, DMCtrl, Address, DataWr, DataRd);
+
+        // Read unsigned byte (LBU)
+        Address = 0; DMCtrl = 3'b100; DMWr = 1'b0; #10;
+        $display("%4dns |  %b    %b    %0d      --  | %h", $time, DMWr, DMCtrl, Address, DataRd);
+
+        // Read unsigned halfword (LHU)
+        Address = 1; DMCtrl = 3'b101; #10;
+        $display("%4dns |  %b    %b    %0d      --  | %h", $time, DMWr, DMCtrl, Address, DataRd);
+
+        #10 $finish;
+    end
+
+endmodule

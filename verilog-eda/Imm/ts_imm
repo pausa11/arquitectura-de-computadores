@@ -1,0 +1,48 @@
+`timescale 1ns/1ps
+
+module tb_Imm_unit;
+
+    // Señales de prueba
+    logic [24:0] ImmIn;
+    logic [2:0]  ImmSrc;
+    logic [31:0] ImmExt;
+
+    // Instanciación del Imm_unit
+    Imm_unit uut (
+        .ImmIn  (ImmIn),
+        .ImmSrc (ImmSrc),
+        .ImmExt (ImmExt)
+    );
+
+    initial begin
+        $display("Time | ImmSrc | ImmIn (hex)   | ImmExt (hex)");
+        $display("---------------------------------------------");
+
+        // I-type: inmediato de 12 bits
+        ImmIn  = 25'h00_ABC; ImmSrc = 3'b000; #10;
+        $display("%4dns |   %b   | %h       | %h", $time, ImmSrc, ImmIn, ImmExt);
+
+        // I-type con signo negativo (bit24=1)
+        ImmIn  = 25'h1_F23; ImmSrc = 3'b000; #10;
+        $display("%4dns |   %b   | %h       | %h", $time, ImmSrc, ImmIn, ImmExt);
+
+        // S-type: bajo 12 bits reordenados
+        ImmIn  = 25'h12_34; ImmSrc = 3'b001; #10;
+        $display("%4dns |   %b   | %h       | %h", $time, ImmSrc, ImmIn, ImmExt);
+
+        // B-type: 13 bits con offset y LSB cero
+        ImmIn  = 25'h0_FF0; ImmSrc = 3'b101; #10;
+        $display("%4dns |   %b   | %h       | %h", $time, ImmSrc, ImmIn, ImmExt);
+
+        // U-type: 20 bits desplazados a MSBs
+        ImmIn  = 25'hABCDE; ImmSrc = 3'b010; #10;
+        $display("%4dns |   %b   | %h       | %h", $time, ImmSrc, ImmIn, ImmExt);
+
+        // J-type: 21 bits con formato J
+        ImmIn  = 25'h1_2345; ImmSrc = 3'b110; #10;
+        $display("%4dns |   %b   | %h       | %h", $time, ImmSrc, ImmIn, ImmExt);
+
+        #10 $finish;
+    end
+
+endmodule

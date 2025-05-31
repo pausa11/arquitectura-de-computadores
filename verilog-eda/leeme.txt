@@ -1,0 +1,1 @@
+las instruncciones se cargan desde el archivo "instruction_memory.hex" . En este, se coloca del .hex que genera el extension risc-v de visual studio code
